@@ -8,7 +8,7 @@ var hourlyTot = [0];
 
 var formL = document.getElementById('new-location');
 
-function locationS(location, minimumC, maximumC, averageSales){
+function LocationS(location, minimumC, maximumC, averageSales){
   this.location = location;
   this.minimumC = minimumC;
   this.maximumC = maximumC;
@@ -32,15 +32,15 @@ function getRandomInt(min, max) {
 }
 
 
-new locationS('Pike Place', 23, 65, 6.3);
-new locationS('Alki', 2, 16, 4.6);
-new locationS('SeaTac', 3, 24, 1.2);
-new locationS('CapHill', 20, 38, 2.3);
-new locationS('SeaCenter', 11, 38, 3.7);
+new Locations('Pike Place', 23, 65, 6.3);
+new Locations('Alki', 2, 16, 4.6);
+new Locations('SeaTac', 3, 24, 1.2);
+new Locations('CapHill', 20, 38, 2.3);
+new Locations('SeaCenter', 11, 38, 3.7);
 
 
 
-locationS.prototype.cookiesSold = function(){
+Locations.prototype.cookiesSold = function(){
   for(var i = 0; i < time.length; i++){
     this.salmons.push(Math.ceil(getRandomInt(this.minimumC, this.maximumC) * this.averageSales));
     cookiesTwo = cookiesTwo + this.salmons[i];
@@ -50,7 +50,7 @@ locationS.prototype.cookiesSold = function(){
   }
 };
 
-locationS.prototype.render = function() {
+Locations.prototype.render = function() {
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
   tdEl.textContent = this.location;
@@ -125,7 +125,7 @@ function inputL(event){
   var minimumC = parseInt(event.target.minCusto.value);
   var maximumC = parseInt(event.target.maxCusto.value);
   var averageSales = parseInt(event.target.avgCooky.value);
-  new locationS(location, minimumC, maximumC, averageSales);
+  new Locations(location, minimumC, maximumC, averageSales);
   renderTable();
 }
 
