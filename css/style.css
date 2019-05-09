@@ -1,3 +1,11 @@
 main{
     color: green;
 }
+td, th{
+    text-align: center;
+    padding: 10px 0;
+    background-color:#B91AD0;
+}
+th{
+    background-color:#DAD5DB;
+}

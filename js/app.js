@@ -6,9 +6,7 @@ var locationTable = document.getElementById('Cookies');
 var cookiesTwo = 0;
 var hourlyTot = [0];
 
-var formL = document.getElementById('new-location');
-
-function LocationS(location, minimumC, maximumC, averageSales){
+function Locations(location, minimumC, maximumC, averageSales){
   this.location = location;
   this.minimumC = minimumC;
   this.maximumC = maximumC;
@@ -44,9 +42,9 @@ Locations.prototype.cookiesSold = function(){
   for(var i = 0; i < time.length; i++){
     this.salmons.push(Math.ceil(getRandomInt(this.minimumC, this.maximumC) * this.averageSales));
     cookiesTwo = cookiesTwo + this.salmons[i];
-    hourlyTot[i] = hourlyTot[i] + this.salmons[i];
+    var current = hourlyTot[i] || 0;
+    hourlyTot[i] = current + this.salmons[i];
     this.salesTwo = this.salesTwo + this.salmons[i];
-
   }
 };
 
@@ -100,6 +98,7 @@ function rowFoot(){
 
   tdEl.textContent = 'Total Sales';
   trEl.appendChild(tdEl);
+
   for(var i = 0; i < time.length; i++){
 
     tdEl = document.createElement('th');
@@ -114,8 +113,6 @@ function rowFoot(){
   locationTable.appendChild(trEl);
 }
 
-render();
-
 
 
 function inputL(event){
@@ -128,8 +125,6 @@ function inputL(event){
   new Locations(location, minimumC, maximumC, averageSales);
   renderTable();
 }
-
-formL.addEventListener('submit', inputL);
 
 function renderTable(){
   locationTable.innerHTML = '';
